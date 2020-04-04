@@ -9,7 +9,7 @@ describe("User" , () => {
     it("should encrypt the password", async () => {
         const user = await User.create({
             name: "Eric" , 
-            email:"fulano@gmail.com" , 
+            email:"fulano2@gmail.com" , 
             password : "123456" 
         })
 
