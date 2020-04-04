@@ -67,11 +67,15 @@ describe("authencation" , () =>{
     })
 
     it("should not be able acess private routes when without jwt token" , async()=>{
-        const user = await factory.create('User' , {
-            password: "1234"
-        })
-    
         const response = await request(app).get('/dashboard') // quer realizar método post na rota /session
+        
+        expect(response.status).toBe(401)
+    })
+
+    it("should not be able acess private routes when jwt token is invalid" , async()=>{
+        const response = await request(app)
+        .get('/dashboard') // quer realizar método post na rota /session
+        .set('Authorization' , `Bearer 4343`)    
         
         expect(response.status).toBe(401)
     })
