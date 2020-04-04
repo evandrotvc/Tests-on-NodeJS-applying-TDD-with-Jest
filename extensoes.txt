@@ -1,0 +1,51 @@
+➜  authtdd yarn add sequelize pg //
+➜  authtdd yarn add sequelize-cli -D
+
+
+➜  authtdd yarn add jsonwebtoken
+➜  authtdd yarn add factory-girl  
+➜  authtdd yarn add faker  
+
+
+'use strict';
+
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('users', {
+      id:{
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        allowNull: false, // campo obrigatório
+        autoIncrement: true,
+      },
+      name:{
+        type: Sequelize.STRING,
+        allowNull: false, // campo obrigatório
+      },
+      email:{
+        type: Sequelize.STRING,
+        allowNull: false, // campo obrigatório
+        unique: true,
+      },
+      password_hasg:{
+        type: Sequelize.STRING,
+        allowNull: false, // campo obrigatório
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false, // campo obrigatório
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false, // campo obrigatório
+      },
+    })
+  },
+
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('users')
+  }
+};
+
+
+mysql -h localhost -u root -p // iniciar o mysql
